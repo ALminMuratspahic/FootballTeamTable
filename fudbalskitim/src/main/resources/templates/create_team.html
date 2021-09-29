@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="newTeam_form.css">
+<title>Create Form</title>
+</head>
+<body>
+	
+		<div align="center" class="teamForm">
+			<h2>Create New Team</h2>
+				<form action="#" th:action=" @{/saveTeam}" th:object="${team}" method="post">
+					<table>
+						<tr>
+							<td>Team Name</td>
+							<td><input type="text" th:field="*{teamName}"></td>
+						</tr>
+						
+						<tr>
+							<td>Country</td>
+							<td><input type="text" th:field="*{country}"></td>
+						</tr>
+						
+						<tr>
+							<td>Coach</td>
+							<td><input type="text" th:field="*{coach}"></td>
+						</tr>
+						
+						<tr>
+							<td>Number Of Player</td>
+							<td><input type="text" th:field="*{numberOfPlayer}"></td>
+						</tr>
+						
+						<tr>
+							<td>Number of Trophey</td>
+							<td><input type="text" th:field="*{numberOfThrophey}"></td>
+						</tr>
+						
+						<tr>
+							<td><button type="submit">Save</button></td>
+						</tr>
+						
+					</table>
+				</form>
+		</div>
+
+</body>
+</html>

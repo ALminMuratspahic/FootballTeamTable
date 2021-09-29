@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="homePage.css">
+</head>
+
+
+
+<body>
+<div class="topHeader">
+	<ul>
+		<li><a href="newTeam">Add New Team</a></li>
+		
+	</ul>
+</div>
+
+<div align="center">
+	<h2>List of All Team in Database</h2>
+	
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<td>Tim Id</td>
+				<td>Tim Name</td>
+				<td>Country</td>
+				<td>Coach</td>
+				<td>Number of Player</td>
+				<td>Number of Throphey</td>
+				<td>Option</td>
+			</tr>
+		</thead>
+		<tbody th:each="tim :${listOfTim}">
+			<tr>
+				<td th:text="${tim.id}">Id</td>
+				<td th:text="${tim.teamName}">tname</td>
+				<td th:text="${tim.country}">county</td>
+				<td th:text="${tim.coach}">coach</td>
+				<td th:text="${tim.numberOfPlayer}">numberOfPlayer</td>
+				<td th:text="${tim.numberOfThrophey}">numberOfThrophey</td>
+				
+				<td> 	<a th:href="@{'/deleteTeam/' + ${tim.id}}">Delete</a>
+						<a th:href="@{'/editTeam/' + ${tim.id}}">Edit</a>
+				</td>	
+			</tr>
+		</tbody>
+	</table>	
+</div>
+
+</body>
+</html>
