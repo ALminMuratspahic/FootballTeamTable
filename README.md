@@ -3,8 +3,10 @@ Exercise : save,delete and edit object.
   
   
   1.Simple form for Create Object
-![teamForm](https://user-images.githubusercontent.com/82029922/135308675-cfa893eb-f77f-4259-9f3e-bc82c4d2889e.jpg)
+![createTeam](https://user-images.githubusercontent.com/82029922/136062502-2e1d9b3b-a586-4972-a151-d711f3101837.jpg)
+
 
   2. After add object to database,it's show in a table.
-![teamhompage1](https://user-images.githubusercontent.com/82029922/135309176-d160c058-19c6-4881-813b-08d7bcf11bc2.jpg)
+![homePageTeam](https://user-images.githubusercontent.com/82029922/136062541-447c0813-03da-49fe-8bf1-3f13a2c06d47.jpg)
+
 
