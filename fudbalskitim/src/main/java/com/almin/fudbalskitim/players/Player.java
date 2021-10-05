@@ -33,7 +33,7 @@ public class Player {
 	private String lastName;
 	
 	@Column
-	private int dressNumber;
+	private int dressNumber; //
 	
 	@Column
 	@Enumerated(EnumType.STRING)
@@ -43,7 +43,8 @@ public class Player {
 //	@JoinColumn(name = "team_id",referencedColumnName = "id")
 	
 	@ManyToOne
-	private Team team;
+	private Team team; //
+	
 	
 	public Long getId() {
 		return id;
