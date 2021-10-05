@@ -17,8 +17,9 @@ import com.almin.fudbalskitim.Team;
 @Entity
 @Table
 public class Player {
+	
 	public Player() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	@Id
