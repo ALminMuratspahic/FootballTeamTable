@@ -1,26 +1,34 @@
 package com.almin.fudbalskitim;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.almin.fudbalskitim.players.Player;
+import com.almin.fudbalskitim.players.playerservice.PlayerService;
 
 @Controller
 public class AppController {
 	
 	@Autowired
 	private TeamService teamService;
+	@Autowired
+	private  PlayerService playerService;
 	
 	@RequestMapping("/")
 	public String getAllTime(Model model){
 		List<Team> listOfTim= teamService.getAllTim();
-		model.addAttribute("listOfTim", listOfTim);
+		model.addAttribute("teams", listOfTim);		
 		return "timHomePage";
 	}
 	
@@ -33,8 +41,8 @@ public class AppController {
 	}
 	
 	@RequestMapping(value = "/saveTeam", method = RequestMethod.POST)
-	public String saveTema(@ModelAttribute("team") Team tim) {
-		teamService.saveTim(tim);
+	public String saveTema(@ModelAttribute("team")Team tim) {
+		teamService.saveTim(tim);	
 		return "redirect:/";
 		
 	}
@@ -51,11 +59,30 @@ public class AppController {
 		mv.addObject("team", team);
 		return mv;
 	}
-	@RequestMapping("/vjezba")
-	public String vievVjezba(Model model) {
-		Team tim = new Team();
-		model.addAttribute("teamm",tim);
-		return "vjezba";
+	
+	
+	
+	//PLAYER
+	@RequestMapping("/allPlayer")
+	public String getAllPlayer(Model model){
+		List<Player>listOfPlayer= playerService.getAllPlayer();
+		model.addAttribute("listOfPlayer", listOfPlayer);
+		return "playerHomePage";
 	}
+	
+	@PostMapping("/savePlayer")
+	public String savePlayer(@ModelAttribute("player")Player player) {
+		playerService.savePlayer(player);
+		return "redirect:/allPlayer";
+	}
+	
+	@RequestMapping("/newPlayer")
+	public String createNewPlayer(Model model) {
+		Player player= new Player();
+		model.addAttribute("player", player);
+		return "create_player";
+	}
+	
+	
 
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" type="text/css" href="newTeam_form.css">
+ 	
+<title>Insert Player</title>
+</head>
+
+<body>
+	<div align="center" class="teamForm">
+	<h2>Create new Player</h2>
+		<form action="#" th:action="@{/savePlayer}" th:object="${player}" method="post">
+	
+			<table>
+				<tr>
+					<td>First Name</td>
+					<td><input type="text" th:field="*{firstName}"></td>
+				</tr>			
+				<tr>
+					<td>Last Name</td>
+					<td><input type="text" th:field="*{lastName}"></td>
+				</tr>
+				<tr>
+					<td>Dress Number</td>
+					<td><input type="text" th:field="*{dressNumber}"></td>
+				</tr>
+				
+			</table>
+			
+			<label for="teamName">Team Name</label>
+				<select th:field="*{team.id}" name="teamName">
+			<option th:each="team :${teams}" th:value="${team.id}"  th:text="${team.teamName}">
+			</select>
+			
+			<label for="position">Select Position:</label>
+				<select  name="position" th:field="*{positionPlay}">
+				<option th:each="positionOpt : ${T(com.almin.fudbalskitim.players.PositionPlay).values()}"
+					th:value="${positionOpt}" th:text="${positionOpt}">
+			</select>
+			<br/>
+			<button type="submit">Save</button>
+			
+		</form>
+	</div>
+
+</body>
+</html>

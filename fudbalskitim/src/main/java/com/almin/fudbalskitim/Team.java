@@ -1,11 +1,22 @@
 package com.almin.fudbalskitim;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.almin.fudbalskitim.players.Player;
+
 
 @Entity
 @Table
@@ -30,6 +41,10 @@ public class Team {
 	
 	@Column
 	private int numberOfThrophey;
+	
+	@OneToMany(targetEntity = Player.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "team_id",referencedColumnName = "id")
+	List<Player>players;
 	
 	public Team() {
 	
@@ -81,6 +96,14 @@ public class Team {
 
 	public void setNumberOfThrophey(int numberOfThrophey) {
 		this.numberOfThrophey = numberOfThrophey;
+	}
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
 	}
 	
 	

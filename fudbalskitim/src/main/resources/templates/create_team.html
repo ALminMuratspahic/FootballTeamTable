@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymleaf.org">
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="newTeam_form.css">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" type="text/css" href="newTeam_form.css">
+ 	
 <title>Create Form</title>
 </head>
-<body>
-	
+
+	<body>
 		<div align="center" class="teamForm">
 			<h2>Create New Team</h2>
-				<form action="#" th:action=" @{/saveTeam}" th:object="${team}" method="post">
+				<form action="#"  th:action=" @{/saveTeam}" th:object="${team}" method="post">
 					<table>
 						<tr>
 							<td>Team Name</td>
@@ -42,6 +45,5 @@
 					</table>
 				</form>
 		</div>
-
-</body>
+	</body>
 </html>

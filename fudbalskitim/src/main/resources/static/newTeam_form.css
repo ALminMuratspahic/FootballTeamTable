@@ -1,21 +1,15 @@
 @charset "UTF-8";
+
 body {
 	background-color:#87ace8;
 	
 }
-
 .teamForm{
 	background-color: #7ba0db;
-	font-size: 25px;
+	font-size: 20px;
 	font-family: cursive;
 	
 }
-button {
-	color: black;
-	size:auto;
-	font-size: 16px;
-}
-button:hover {
-	background: #81f0ae;
-	color: black;
+
+			 
 }

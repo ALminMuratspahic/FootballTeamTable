@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Home Page</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="homePage.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 	<link rel="stylesheet" type="text/css" href="homePage.css">
+ 	
+  <title>Home Page</title>
 </head>
-
-
 
 <body>
 <div class="topHeader">
 	<ul>
-		<li><a href="newTeam">Add New Team</a></li>
-		
+		<li><a href="newTeam">Add New Team</a></li>	
+		<li><a href="newPlayer">Add New Player</a></li>	
 	</ul>
 </div>
 
 <div align="center">
 	<h2>List of All Team in Database</h2>
-	
+	<a href="allPlayer" class="btn btn-outline-info">All Player</a>
 	<table border="1" cellpadding="10">
-		<thead>
+		<thead style="background-color: #377a87 ; color: white;">
 			<tr>
 				<td>Tim Id</td>
 				<td>Tim Name</td>
 				<td>Country</td>
 				<td>Coach</td>
 				<td>Number of Player</td>
-				<td>Number of Throphey</td>
+				<td>Number of Throphy</td>
 				<td>Option</td>
 			</tr>
 		</thead>
-		<tbody th:each="tim :${listOfTim}">
+		<tbody th:each="tim :${teams}">
 			<tr>
 				<td th:text="${tim.id}">Id</td>
 				<td th:text="${tim.teamName}">tname</td>
 				<td th:text="${tim.country}">county</td>
 				<td th:text="${tim.coach}">coach</td>
 				<td th:text="${tim.numberOfPlayer}">numberOfPlayer</td>
-				<td th:text="${tim.numberOfThrophey}">numberOfThrophey</td>
+				<td th:text="${tim.numberOfThrophey}">numberOfThrophy</td>
 				
-				<td> 	<a th:href="@{'/deleteTeam/' + ${tim.id}}">Delete</a>
-						<a th:href="@{'/editTeam/' + ${tim.id}}">Edit</a>
+				<td> 	<a th:href="@{'/deleteTeam/' + ${tim.id}}" class="btn btn-danger" role="button" aria-pressed="true">Delete</a>
+						<a th:href="@{'/editTeam/' + ${tim.id}}" class="btn btn-warning" role="button" aria-pressed="true">Edit</a>
 				</td>	
+					
 			</tr>
 		</tbody>
 	</table>	

@@ -16,8 +16,8 @@ public class TeamService {
 		return teamRepository.findAll();
 	}
 	//Save
-	public void saveTim(Team tim) {
-		teamRepository.save(tim);
+	public Team saveTim(Team tim) {
+		return teamRepository.save(tim);
 	}
 	//Delete
 	public void deleteTim(Long id) {
