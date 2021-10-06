@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.almin</groupId>
-	<artifactId>fudbalskitim</artifactId>
+	<artifactId>fudbalplayer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>fudbalskitim</name>
+	<name>fudbalplayer</name>
 	<description>Povezivanje HTML-a,SpringBoot-a,MySQL-a</description>
 	<properties>
 		<java.version>11</java.version>

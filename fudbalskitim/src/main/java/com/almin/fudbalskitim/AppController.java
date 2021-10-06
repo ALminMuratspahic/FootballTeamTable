@@ -80,6 +80,7 @@ public class AppController {
 	public String createNewPlayer(Model model) {
 		Player player= new Player();
 		model.addAttribute("player", player);
+		model.addAttribute("teams", teamService.getAllTim());
 		return "create_player";
 	}
 	
