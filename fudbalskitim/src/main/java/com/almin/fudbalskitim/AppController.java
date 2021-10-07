@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,8 +61,6 @@ public class AppController {
 		return mv;
 	}
 	
-	
-	
 	//PLAYER
 	@RequestMapping("/allPlayer")
 	public String getAllPlayer(Model model){
@@ -82,6 +81,29 @@ public class AppController {
 		model.addAttribute("player", player);
 		model.addAttribute("teams", teamService.getAllTim());
 		return "create_player";
+	}
+	
+	@RequestMapping("/deletePlayer/{id}")
+	public String deletePlayer(@PathVariable(name="id")Long id) {
+			playerService.deletePlayer(id);
+			return "redirect:/allPlayer";
+	}
+	@RequestMapping("/editPlayer/{id}")
+	public ModelAndView editPlayer(@PathVariable(name = "id") Long id,Model model) {
+		ModelAndView modelView = new ModelAndView("edit_player");
+		Player player = playerService.getPlayerById(id);
+		model.addAttribute("teams", teamService.getAllTim());
+		modelView.addObject("player",player);
+		return modelView;
+		
+	}
+	
+	@RequestMapping("/infoTeam/{id}")
+	public ModelAndView playerForOneTeam(@PathVariable(name = "id")Long id,Model modell){
+		 ModelAndView model= new ModelAndView("allAbout_team");
+		 List<Player>listForOneTeam=playerService.getPlayerByTeam(id);
+		 modell.addAttribute("players", listForOneTeam);
+		 return model;
 	}
 	
 	

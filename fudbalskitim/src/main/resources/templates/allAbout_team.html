@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymleaf.org">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-		crossorigin="anonymous">
- 	<link rel="stylesheet" type="text/css" href="homePage.css">
-<title>All Player in DataBase</title>
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+			crossorigin="anonymous">
+ 	
+<title>Team</title>
+
+<style type="text/css">
+
+	body{
+	background-color:#4ec5ed;
+	
+}
+	table {
+	color: #3a306b;
+	border-style: dotted;
+	border-color: black;
+	text-align: center;
+	font-style: italic;
+	font-size: 20px;
+}
+
+
+</style>
 </head>
 
 <body>
 	<div align="center">
-	<h2>All Player in Database</h2>
+	<h2>Player in Team</h2>
 		<table border="1" cellpading="10">
 			<thead style="background-color: #377a87;color:white;">
 				<tr>
@@ -26,7 +43,7 @@
 					<td>Option</td>
 				</tr>	
 			</thead>
-			<tbody th:each="player :${listOfPlayer}">
+			<tbody th:each="player :${players}">
 				<tr>
 					<td th:text="${player.id}">Id</td>
 					<td th:text="${player.firstName}">First NAme</td>
@@ -35,9 +52,9 @@
 					<td th:text="${player.positionPlay}">Position Play</td>
 					<td th:text="${player.team?.teamName}">Team</td>
 					<td> <a th:href="@{'/deletePlayer/' +${player.id}}" 
-								class="btn btn-danger" roll="button" aria-pressed="true">Delete</a>
-						<a th:href="@{'/editPlayer/' + ${player.id}}"
-							 	class="btn btn-warning" roll="button">Edit</a>
+							class="btn btn-danger" roll="button" aria-pressed="true">Delete</a>
+						<a th:href="@{'/editPlayer/' + ${player.id}}" 
+							class="btn btn-warning" roll="button">Edit</a>
 					</td>
 				</tr>
 			</tbody>

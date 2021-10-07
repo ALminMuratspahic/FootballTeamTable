@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymleaf.org">
-<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+			 crossorigin="anonymous">
  	<link rel="stylesheet" type="text/css" href="homePage.css">
  	
   <title>Home Page</title>
@@ -35,7 +36,10 @@
 		<tbody th:each="tim :${teams}">
 			<tr>
 				<td th:text="${tim.id}">Id</td>
-				<td th:text="${tim.teamName}">Team Name</td>
+				<td ><a th:href="@{'/infoTeam/' +${tim.id}}" th:text="${tim.teamName}" 
+								 class="btn btn-info" roll="button"aria-pressed="true"></a>
+				</td>
+				
 				<td th:text="${tim.country}">County</td>
 				<td th:text="${tim.coach}">Coach</td>
 				<td th:text="${tim.numberOfPlayer}">NumberOfPlayer</td>

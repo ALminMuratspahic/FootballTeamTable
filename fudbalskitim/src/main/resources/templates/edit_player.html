@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<meta charset="UTF-8">
+<title>Edit Player</title>
+<style type="text/css">
+
+body {
+	background-color: #87ace8;
+}
+
+.editPlayerForm{
+	background-color: #7ba0db;
+	font-size: 25px;
+	font-family: cursive;	
+}
+button {
+	color: black;
+	size:auto;
+	font-size: 16px;
+}
+button:hover {
+	background: #81f0ae;
+	color: black;
+}
+
+</style>
+</head>
+<body>
+
+	
+<div align="center" class="editPlayerForm">
+	<h2>Edit Player</h2>
+		<form action="#" th:action="@{/savePlayer}" th:object="${player}" method="post">
+			<table>
+				<tr>
+				<td>Player Id</td>
+				<td><input type="text" th:field="*{id}" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td>First Name</td>
+					<td><input type="text" th:field="*{firstName}"></td>
+				</tr>			
+				<tr>
+					<td>Last Name</td>
+					<td><input type="text" th:field="*{lastName}"></td>
+				</tr>
+				<tr>
+					<td>Dress Number</td>
+					<td><input type="text" th:field="*{dressNumber}"></td>
+				</tr>
+				
+			</table>
+			
+			<label for="teamName">Team Name</label>
+				<select id="teamSelect" name="teamSelect" th:field="*{team}">
+				<option value="">Select Team</option>
+			<option th:each="team :${teams}" th:value="${team.id}"  th:text="${team.teamName}">
+			</select>
+			
+			<label for="position">Select Position:</label>
+				<select  name="position" th:field="*{positionPlay}">
+				<option th:each="positionOpt : ${T(com.almin.fudbalskitim.players.PositionPlay).values()}"
+					th:value="${positionOpt}" th:text="${positionOpt}">
+			</select>
+			<br/>
+			<button type="submit">Save</button>		
+		</form>
+</div>
+</body>
+</html>
