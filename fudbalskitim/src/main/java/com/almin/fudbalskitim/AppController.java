@@ -72,7 +72,8 @@ public class AppController {
 	@PostMapping("/savePlayer")
 	public String savePlayer(@ModelAttribute("player")Player player) {
 		playerService.savePlayer(player);
-		return "redirect:/allPlayer";
+		teamService.incrementNumberOfPlayers(player.getTeam());
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/newPlayer")
@@ -85,9 +86,12 @@ public class AppController {
 	
 	@RequestMapping("/deletePlayer/{id}")
 	public String deletePlayer(@PathVariable(name="id")Long id) {
-			playerService.deletePlayer(id);
+			Player player = playerService.getPlayerById(id);
+			teamService.decrementNumberOfPlayers(player.getTeam());
+			playerService.deletePlayer(player);
 			return "redirect:/allPlayer";
 	}
+	
 	@RequestMapping("/editPlayer/{id}")
 	public ModelAndView editPlayer(@PathVariable(name = "id") Long id,Model model) {
 		ModelAndView modelView = new ModelAndView("edit_player");
@@ -101,7 +105,10 @@ public class AppController {
 	@RequestMapping("/infoTeam/{id}")
 	public ModelAndView playerForOneTeam(@PathVariable(name = "id")Long id,Model modell){
 		 ModelAndView model= new ModelAndView("allAbout_team");
+		 
 		 List<Player>listForOneTeam=playerService.getPlayerByTeam(id);
+		 Player player = new Player();
+		 modell.addAttribute("player", player);
 		 modell.addAttribute("players", listForOneTeam);
 		 return model;
 	}

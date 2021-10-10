@@ -27,7 +27,7 @@ public class PlayerService {
 	public List<Player>getAllPlayer(){
 		return playerRepositroy.findAll();
 	}
-	
+
 	public Player savePlayer(Player player) {
 		return playerRepositroy.save(player);
 	}
@@ -41,9 +41,14 @@ public class PlayerService {
 	}
 
 	public List<Player>getPlayerByTeam(Long id){
+		System.out.println("TeamdID : " + id);
 		return getAllPlayer().stream()
 							.filter(player->player.getTeam().getId().equals(id))
 							.collect(Collectors.toList());
+	}
+	
+	public void deletePlayer(Player player) {
+		playerRepositroy.delete(player);
 	}
 	
 }
