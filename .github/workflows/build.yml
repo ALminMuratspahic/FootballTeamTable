@@ -35,7 +35,7 @@ jobs:
         run: pwd  # Print the current working directory for debugging
 
       - name: List files
-        run: ls -la  # List files in the current directory for debugging
+        run: ls -la  # List files in the current directory for debugging d
 
       - name: Build and analyze
         env:
