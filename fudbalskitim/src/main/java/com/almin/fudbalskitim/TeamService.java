@@ -39,7 +39,5 @@ public class TeamService {
 	public void decrementNumberOfPlayers(Team team) {
 		team.setNumberOfPlayer(team.getNumberOfPlayer()-1);
 		saveTim(team);
-		System.out.println("first");
-		System.out.println("second");
 	}
 }
