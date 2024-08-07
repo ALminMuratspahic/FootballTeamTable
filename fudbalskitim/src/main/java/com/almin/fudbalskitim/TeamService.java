@@ -40,5 +40,6 @@ public class TeamService {
 		team.setNumberOfPlayer(team.getNumberOfPlayer()-1);
 		saveTim(team);
 		System.out.println("first");
+		System.out.println("second");
 	}
 }
